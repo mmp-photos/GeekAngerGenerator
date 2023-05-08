@@ -76,13 +76,13 @@ const TestPage = () => {
             return(
                 <>
                     <Col md={7} id='quote'>
-                        <p>{SimpsonsQuote.quote}</p>
+                        <p className="quote">{SimpsonsQuote.quote}</p>
+                    </Col>
+                    <Col id='image'>
+                        <img className="IceAndFire" src={IceAndFireCharacter.imageUrl} alt={IceAndFireCharacter.firstName} />
                         <p className="attribution">
                             &ndash; {IceAndFireCharacter.firstName} {IceAndFireCharacter.lastName}
                         </p>
-                    </Col>
-                    <Col md={4} id='image'>
-                        <img className="IceAndFire" src={IceAndFireCharacter.imageUrl} alt={IceAndFireCharacter.firstName} />
                     </Col>
                 </>
             )
@@ -92,15 +92,13 @@ const TestPage = () => {
     return(
         <Container fluid style={{height: "100vh", width: "100%", marginLeft:"0px"}} id="cloud-intro">
             <Row>
-                <Col>
-                    <h1>Winter is Coming... to Springfield</h1>
+                <Col id="masthead">
+                    <h1>Winter is Coming... <br/>to Springfield</h1>
                 </Col>
             </Row>
             <Row>
-                <Col>
-                    <Row style={{width: "65%", margin: "auto", backgroundColor: "#107DC0", paddingTop: 12, 
-                                 paddingLeft: 6, paddingBottom:16, borderStyle: "solid", borderWidth: 3, borderColor: "black", 
-                                 borderRadius: "30px", minHeight: "18em"}}>
+                <Col  className="primary-container" sm={8} md={{span: 8, offset: 2}}>
+                    <Row>
                         {finalOutput()}
                     </Row>
                 </Col>

@@ -10,12 +10,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import TestPage from './pages/TestPage';
+import HomePage from './pages/HomePage';
 
 // PAGE CONSTRUCTION START //
 function App() {
   return (
     <div style={{width: "100%"}}>
         <Routes>
+            <Route path="/" element = {<HomePage />} />
             <Route path="test" element = {<TestPage />} />
         </Routes>
 
