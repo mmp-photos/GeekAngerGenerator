@@ -4,7 +4,7 @@ import { Container, Row, Col, } from 'reactstrap';
 import '../assets/styles/cloudStyles.css';
 import donut from '../assets/images/donut_spinner.svg';
 
-const TestPage = () => {
+const WinterSpringfield = () => {
     const [ SimpsonsQuote, SetSimpsonsQuote ] = useState({});
     const [ IceAndFireCharacter, SetIceAndFireCharacter ] = useState([]);
     const dataFetchedRef = useRef(false);
@@ -65,6 +65,14 @@ const TestPage = () => {
             simpsonsQuoteApi();
     }, []);
 
+    const fetchNewData = () => {
+        console.log(`Fetch new data`)
+        setSimpsonsLoading(true);
+        setASOIFLoading(true);
+        iceAndFireApi();
+        simpsonsQuoteApi();
+    }
+
     const finalOutput = () => {
         if(simpsonsLoading || ASOIFLoading) {
             return(
@@ -101,10 +109,15 @@ const TestPage = () => {
                     <Row>
                         {finalOutput()}
                     </Row>
+                    <Row>
+                        <Col>
+                            <button onClick={fetchNewData}> Reload</button>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </Container>
     )
 };
 
-export default TestPage;
+export default WinterSpringfield;

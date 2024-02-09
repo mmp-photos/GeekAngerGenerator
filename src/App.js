@@ -9,16 +9,14 @@
 // IMPORTS //
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import TestPage from './pages/TestPage';
-import HomePage from './pages/HomePage';
+import WinterSpringfield from './pages/WinterSpringfield';
 
 // PAGE CONSTRUCTION START //
 function App() {
   return (
     <div style={{width: "100%"}}>
         <Routes>
-            <Route path="/" element = {<HomePage />} />
-            <Route path="test" element = {<TestPage />} />
+            <Route path="/" element = {<WinterSpringfield />} />
         </Routes>
 
     </div>

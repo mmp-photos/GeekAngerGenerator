@@ -10,6 +10,7 @@
     /* DEFINE COLORS FOR WEBSITE */
       --background-color: #107DC0;
       --yellow: #FED90F;
+      --crimson: crimson;
   
    /****** DESKTOP SITE VARIABLES ******/
       /* ALIGNMENT VARIABLES */
@@ -124,4 +125,10 @@
   100% {
       transform: rotate(360deg);
   }
+}
+
+.reload {
+  background-color: var(--crimson);
+  border-radius: 50%;
+  padding: 24px;
 }
