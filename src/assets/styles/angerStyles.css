@@ -130,5 +130,7 @@
 .reload {
   background-color: var(--crimson);
   border-radius: 50%;
-  padding: 24px;
+  padding: 12px;
+  border: 0px;
+  color: var(--yellow);
 }

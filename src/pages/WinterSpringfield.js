@@ -7,6 +7,8 @@ import donut from '../assets/images/donut_spinner.svg';
 const WinterSpringfield = () => {
     const [ SimpsonsQuote, SetSimpsonsQuote ] = useState({});
     const [ IceAndFireCharacter, SetIceAndFireCharacter ] = useState([]);
+    const [ characterList, setCharacterList ] = useState([]);
+    const [ selectedCharacter, setSelectedCharacter ] = useState('');
     const dataFetchedRef = useRef(false);
     const dataFetchedRef2 = useRef(false);
     const [ simpsonsLoading, setSimpsonsLoading ] = useState(true);
@@ -27,18 +29,24 @@ const WinterSpringfield = () => {
         }));
     }
 
-    const iceAndFireApi = async () => { 
-        let max = 150;
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-          };
-        let characterId = getRandomInt(52);
+    const iceAndFireApi = async () => {
+        let characterId = 43;
+        if(selectedCharacter){
+            characterId = selectedCharacter;
+        }
+        else {
+            let max = 150;
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            };
+            characterId = getRandomInt(52);    
+        }
         let apiUrl = `https://thronesapi.com/api/v2/Characters/${characterId}`;
         await fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            console.log(data.firstName);
+            // console.log(data);
+            // console.log(data.firstName);
             let thrones = {};
             thrones = data;
             if(thrones.lastName === 'None' || 
@@ -53,10 +61,45 @@ const WinterSpringfield = () => {
         });
     }
 
+    const allCharacters = async () => { 
+        let apiUrl = `https://thronesapi.com/api/v2/Characters/`;
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+              throw new Error('Failed to fetch characters');
+            }
+        const data = await response.json();
+        const formattedCharacters = data.map(character => ({
+          id: character.id,
+          fullName: character.fullName,
+        }));
+        setCharacterList(formattedCharacters);
+        } catch (error) {
+        console.error('Error fetching characters:', error);
+        }
+    }
+
+    useEffect(() => {
+        allCharacters();
+    }, []);
+
+    let sortCharacters = characterList.sort((a, b) => {
+        let fa = a.fullName,
+        fb = b.fullName;
+
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+    });
+
     useEffect(() => {
         if(dataFetchedRef2.current) return;
             dataFetchedRef2.current = true;
-                iceAndFireApi();
+                iceAndFireApi(selectedCharacter);
     }, []);
 
     useEffect(() => {
@@ -66,11 +109,18 @@ const WinterSpringfield = () => {
     }, []);
 
     const fetchNewData = () => {
-        console.log(`Fetch new data`)
+        console.log(selectedCharacter)
         setSimpsonsLoading(true);
         setASOIFLoading(true);
-        iceAndFireApi();
+        iceAndFireApi(selectedCharacter);
         simpsonsQuoteApi();
+    }
+
+    const handleSelect = (e) => {
+        let newCharacter = e.target.value;
+        setSelectedCharacter(newCharacter)
+        console.log(`Selected character is: ${newCharacter}`);
+        console.log(selectedCharacter);
     }
 
     const finalOutput = () => {
@@ -80,7 +130,7 @@ const WinterSpringfield = () => {
             )
         }
         else {
-            console.log("Loading is complete.");
+            // console.log("Loading is complete.");
             return(
                 <>
                     <Col md={7} id='quote'>
@@ -111,7 +161,22 @@ const WinterSpringfield = () => {
                     </Row>
                     <Row>
                         <Col>
-                            <button onClick={fetchNewData}> Reload</button>
+                            <div style={{width: '100%', margin: 'auto', textAlign: 'center'}}>
+                            Chose a character
+                            <form>
+                            <select style={{margin: '16px'}} value={selectedCharacter} onChange={handleSelect}>
+                                <option value="" >Random Character</option>
+                                {characterList.map((character) =>{
+                                    return(
+                                        <option key={character.id} value={character.id}>
+                                            {character.fullName}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                            </form>
+                            <button className="reload" onClick={fetchNewData}><i className="fa-solid fa-rotate-right"></i></button>
+                            </div>
                         </Col>
                     </Row>
                 </Col>
