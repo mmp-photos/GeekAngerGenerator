@@ -11,6 +11,7 @@
       --background-color: #107DC0;
       --yellow: #FED90F;
       --crimson: crimson;
+      --burnt-orange: #A04C23;
   
    /****** DESKTOP SITE VARIABLES ******/
       /* ALIGNMENT VARIABLES */
@@ -57,6 +58,19 @@
     padding-top:2rem;
     padding-bottom:1rem;
   }
+  .secondary-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(16,125,192, .7);
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 30px;
+    padding: 2.25rem;
+    margin-top: 62px;
+    color: white;
+  }
 /**/
 
 /* DIV STYLES */
@@ -80,8 +94,10 @@
   h1 {
     font-family: 'Game of Thrones','Times New Roman', Times, serif;
     font-size: 30pt;
-    color: black;
+    color: silver;
     text-align: center;
+    line-height: 1.5em;
+    text-shadow: 3px 3px black;
   }
   p.attribution {
     font-family: var(--asoiaf-fonts);
@@ -100,6 +116,13 @@
   }
 /**/
 
+/* UTILITY STYLES */
+ .margin32{
+  margin: 32px;
+}
+ .padding12 {
+    padding: 12px;
+ }
 /* IMAGE STYLES */
 
   .IceAndFire {

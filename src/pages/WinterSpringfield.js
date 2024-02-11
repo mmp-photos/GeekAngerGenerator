@@ -114,6 +114,7 @@ const WinterSpringfield = () => {
         setASOIFLoading(true);
         iceAndFireApi(selectedCharacter);
         simpsonsQuoteApi();
+        setSelectedCharacter('')
     }
 
     const handleSelect = (e) => {
@@ -139,7 +140,7 @@ const WinterSpringfield = () => {
                     <Col id='image'>
                         <img className="IceAndFire" src={IceAndFireCharacter.imageUrl} alt={IceAndFireCharacter.firstName} />
                         <p className="attribution">
-                            &ndash; {IceAndFireCharacter.firstName} {IceAndFireCharacter.lastName}
+                            &ndash;&nbsp;&nbsp;{IceAndFireCharacter.firstName}&nbsp;{IceAndFireCharacter.lastName}
                         </p>
                     </Col>
                 </>
@@ -148,6 +149,7 @@ const WinterSpringfield = () => {
     };
 
     return(
+        <>
         <Container fluid style={{height: "100vh", width: "100%", marginLeft:"0px"}} id="cloud-intro">
             <Row>
                 <Col id="masthead">
@@ -160,12 +162,12 @@ const WinterSpringfield = () => {
                         {finalOutput()}
                     </Row>
                     <Row>
-                        <Col>
+                        <Col className="margin32">
                             <div style={{width: '100%', margin: 'auto', textAlign: 'center'}}>
                             Chose a character
-                            <form>
-                            <select style={{margin: '16px'}} value={selectedCharacter} onChange={handleSelect}>
-                                <option value="" >Random Character</option>
+                            <form style={{display: "inline-block", margin: '16px'}}>
+                            <select value={selectedCharacter} onChange={handleSelect}>
+                                <option value="" > </option>
                                 {characterList.map((character) =>{
                                     return(
                                         <option key={character.id} value={character.id}>
@@ -181,7 +183,13 @@ const WinterSpringfield = () => {
                     </Row>
                 </Col>
             </Row>
+            <Row>
+                <Col className="secondary-container" sm={8} md={{span: 8, offset: 2}}>
+                        <p style={{opacity: 1}}>This site was made by combining the results of calls to the <a href="https://thesimpsonsquoteapi.glitch.me">Simpson's Quotes API</a> and the <a href="https://thronesapi.com">ThronesAPI</a>.</p>
+                </Col>
+            </Row>
         </Container>
+        </>
     )
 };
 
