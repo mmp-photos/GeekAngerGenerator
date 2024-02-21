@@ -1,6 +1,11 @@
 /* STYLES FOR THE GEEK ANGER GENERATOR */
 /* Started 12-22 by Matthew Mayer as a portfolio project */
 
+@font-face {
+  font-family: Simpsonfont;
+  src: url('../fonts/simpsonfont/Simpsonfont\ DEMO.otf') format('otf'),
+}
+
 :root {  
   /****** DEFINE SITEWIDE VARIABLES ******/
     /* DEFINE FONTS FOR THE SITE */
