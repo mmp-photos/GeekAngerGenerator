@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: Simpsonfont;
-  src: url('../fonts/simpsonfont/Simpsonfont\ DEMO.otf') format('otf'),
+  src: url('../fonts/simpsonfont/Simpsonfont_DEMO.otf') format('opentype'),
 }
 @font-face {
-  font-family: Simpsonfont;
-  src: url('../fonts/Game\ of\ Thrones.ttf') format('ttf'),
+  font-family: Game of Thrones;
+  src: url('../fonts/GameofThrones.ttf') format('truetype'),
 }
 :root {  
   /****** DEFINE SITEWIDE VARIABLES ******/
