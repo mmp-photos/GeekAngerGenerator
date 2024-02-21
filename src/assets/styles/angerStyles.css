@@ -5,7 +5,10 @@
   font-family: Simpsonfont;
   src: url('../fonts/simpsonfont/Simpsonfont\ DEMO.otf') format('otf'),
 }
-
+@font-face {
+  font-family: Simpsonfont;
+  src: url('../fonts/Game\ of\ Thrones.ttf') format('ttf'),
+}
 :root {  
   /****** DEFINE SITEWIDE VARIABLES ******/
     /* DEFINE FONTS FOR THE SITE */
