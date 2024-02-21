@@ -4,7 +4,6 @@ html, body, .container{
     min-height: 500px;
     margin: 0;
     padding: 0;
-    overflow: hidden;
   }
   .container{
     background-color: #107DC0;
